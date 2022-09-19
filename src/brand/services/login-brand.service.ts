@@ -31,7 +31,10 @@ export class LoginBrandService {
         throw new BadRequestErrorException('Brand does not Exist');
       }
 
-      const passwordMatch = await comparePassword(data.password, brand.password);
+      const passwordMatch = await comparePassword(
+        data.password,
+        brand.password,
+      );
 
       if (!passwordMatch) {
         throw new BadRequestErrorException(

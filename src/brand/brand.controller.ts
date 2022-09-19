@@ -17,7 +17,9 @@ export class BrandController {
 
   @Post('create')
   @HttpCode(201)
-  async createUser(@Body() data: CreateBrandDto): Promise<SuccessResponseType> {
+  async createBrand(
+    @Body() data: CreateBrandDto,
+  ): Promise<SuccessResponseType> {
     const result = await this.createBrandService.execute(data);
     return successResponse({
       message: 'Account created successfully',
@@ -29,7 +31,7 @@ export class BrandController {
 
   @Post('login')
   @HttpCode(200)
-  async loginUser(@Body() data: LoginBrandDto): Promise<SuccessResponseType> {
+  async loginBrand(@Body() data: LoginBrandDto): Promise<SuccessResponseType> {
     const result = await this.loginBrandService.execute(data);
     return successResponse({
       message: 'Brand logged in successfully',
