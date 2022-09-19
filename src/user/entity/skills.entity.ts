@@ -1,5 +1,3 @@
-import { Role } from 'src/types';
-import { Wallet } from 'src/wallet/entity/wallet.entity';
 import {
   Column,
   CreateDateColumn,
