@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { SECRET_KEY } from 'src/config/keys';
-import { ForbiddenErrorException } from '../filters/error-exceptions';
+import { UnAuthorizedErrorException } from '../filters/error-exceptions';
 
 dotenv.config();
 
@@ -34,6 +34,16 @@ export class VerifyTokenMiddleware implements NestMiddleware {
   use(req: CustomRequest, res: Response, next: NextFunction) {
     const accessToken = req.headers['x-access-token'] as string;
 
+    if (!accessToken) {
+      res
+        .status(401)
+        .json(
+          new UnAuthorizedErrorException(
+            'You are not Authenticated',
+          ).getResponse(),
+        );
+    }
+
     verifyTokens({
       token: accessToken,
       secret: SECRET_KEY as string,
@@ -49,7 +59,7 @@ export class VerifyTokenMiddleware implements NestMiddleware {
         res
           .status(401)
           .json(
-            new ForbiddenErrorException(
+            new UnAuthorizedErrorException(
               'Your access token is either expired or invalid',
             ).getResponse(),
           );
