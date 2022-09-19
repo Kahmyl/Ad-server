@@ -19,10 +19,13 @@ export class Campaign {
   id: string;
 
   @Column()
+  brand_id: string;
+
+  @Column()
   name: string;
 
   @Column()
-  image: string;
+  graphic_url: string;
 
   @Column()
   ad_url: string;

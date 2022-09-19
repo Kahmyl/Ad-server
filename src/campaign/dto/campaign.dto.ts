@@ -12,11 +12,13 @@ export class CreateCampaignDto {
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  graphic_url: string;
 
   @IsString()
   @IsUrl()
   ad_url: string;
+
+  brand_id: string;
 
   target_location: CreateCampaignLocationDto[];
 
@@ -28,8 +30,9 @@ export class CreateCampaignDto {
 
   public toEntity(payload: CreateCampaignDto) {
     const data = new Campaign();
+    data.brand_id = payload.brand_id;
     data.name = payload.name;
-    data.image = payload.image;
+    data.graphic_url = payload.graphic_url;
     data.ad_url = payload.ad_url;
     data.education = payload.target_education_level;
     data.location = payload.target_location;
@@ -41,8 +44,9 @@ export class CreateCampaignDto {
   public fromEntity(payload: Campaign) {
     const data = new Campaign();
     data.id = payload.id;
+    data.brand_id = payload.brand_id;
     data.name = payload.name;
-    data.image = payload.image;
+    data.graphic_url = payload.graphic_url;
     data.ad_url = payload.ad_url;
     data.created_at = payload.created_at;
     data.created_at = payload.updated_at;
