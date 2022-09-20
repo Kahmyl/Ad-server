@@ -64,6 +64,8 @@ export class ChargeCardService {
           payPayload.trans_reference = tx_ref;
           await manager.getRepository(Payment).save(payPayload);
 
+          open(response.data.url);
+
           return response.data;
         } catch (error) {
           this.logger.error(error);

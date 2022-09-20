@@ -28,7 +28,7 @@ export class ChargeCardDto {
 }
 
 export class AddPaymentDto {
-  user_id: string;
+  brand_id: string;
 
   @IsEnum([Currency.USD])
   @IsString()
@@ -48,7 +48,7 @@ export class AddPaymentDto {
 
   public toEntity(payload: AddPaymentDto) {
     const data = new Payment();
-    data.made_by = payload.user_id;
+    data.made_by = payload.brand_id;
     data.base_currency = payload.currency;
     data.amount = payload.amount;
     data.transaction_fee_currency = payload.currency;

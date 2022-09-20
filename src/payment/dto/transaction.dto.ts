@@ -11,7 +11,7 @@ import { Transaction } from '../entity/transaction.entity';
 export class AddTransanctionDto {
   trans_reference: string;
 
-  user_id: string;
+  brand_id: string;
 
   @IsString()
   @IsNotEmpty()
@@ -26,10 +26,7 @@ export class AddTransanctionDto {
   @IsString()
   narration: string;
 
-  @IsEnum([
-    TransactionType.CREDIT,
-    TransactionType.DEBIT,
-  ])
+  @IsEnum([TransactionType.CREDIT, TransactionType.DEBIT])
   @IsString()
   transaction_type: string;
 
@@ -40,7 +37,7 @@ export class AddTransanctionDto {
   public toEntity(payload: AddTransanctionDto) {
     const data = new Transaction();
     data.trans_reference = payload.trans_reference;
-    data.made_by = payload.user_id;
+    data.made_by = payload.brand_id;
     data.wallet_id = payload.wallet_id;
     data.amount = payload.amount;
     data.currency = payload.currency;
