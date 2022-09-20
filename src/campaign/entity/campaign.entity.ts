@@ -36,6 +36,9 @@ export class Campaign {
   @Column({ default: 50 })
   available_actions: number;
 
+  @Column({ default: 50 })
+  available_conversions: number;
+
   @OneToMany(() => CampaignEducation, (education) => education.campaign, {
     cascade: ['insert', 'remove'],
     onDelete: 'CASCADE',
