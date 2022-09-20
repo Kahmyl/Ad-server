@@ -11,6 +11,7 @@ export enum PaymentStatus {
 export enum TransactionType {
   DEBIT = 'debit',
   CREDIT = 'credit',
+  DESK = 'desk',
 }
 
 export enum PaymentPlatform {
@@ -22,3 +23,5 @@ export enum UserRole {
   CONSUMER = 'consumer',
   ADVERTISER = 'advertiser',
 }
+
+export const Price = 450;
