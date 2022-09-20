@@ -20,7 +20,7 @@ export class GetSingleCampaignService {
         .leftJoinAndSelect('campaign.campaign_locations', ',locations')
         .leftJoinAndSelect('campaign.campaign_skills', ',skills')
         .where('campaign.brand_id = :brand_id', { brand_id })
-        .where('campaign.id = :id', { id })
+        .andWhere('campaign.id = :id', { id })
         .getOne();
       return result;
     } catch (error) {
